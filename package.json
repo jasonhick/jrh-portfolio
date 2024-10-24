@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js"
+    "ng": "ng",
+    "build": "ng build",
+    "start": "node server.js",
+    "postinstall": "ng build --prod"
+
   },
   "private": true,
   "dependencies": {
@@ -59,5 +63,9 @@
     "tslib": "^2.3.0",
     "typescript": "~5.5.2",
     "typescript-eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": "20.18.0",
+    "npm": "10.8.2"
   }
 }

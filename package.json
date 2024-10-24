@@ -4,7 +4,6 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "build": "ng build",
     "start": "node server.js"
   },
   "private": true,

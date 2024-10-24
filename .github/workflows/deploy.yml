@@ -9,6 +9,9 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
 
+        env:
+            NODE_ENV: production
+
         steps:
             - uses: actions/checkout@v4
 
@@ -21,12 +24,13 @@ jobs:
               run: npm ci
 
             - name: Build the app
-              run: npx nx run frontend:build --configuration=production
+              run: npx nx run frontend:build --configuration=${{ env.NODE_ENV }}
 
-            - name: Deploy to Heroku
+            - name: Deploy to Heroku ${{ secrets.HEROKU_APP_NAME }}
               env:
                   HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
                   HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
               run: |
+                  echo "Deploying to $NODE_ENV environment"
                   git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
                   git push heroku master

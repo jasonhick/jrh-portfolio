@@ -28,5 +28,5 @@ jobs:
                   HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
                   HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
               run: |
-                  git remote add heroku https://heroku:"$HEROKU_API_KEY"@git.heroku.com/"$HEROKU_APP_NAME".git
+                  git remote add heroku https://heroku:HRKU-85b9504c-e9ee-468f-a5fd-3e858b82d241@git.heroku.com/jasonhick-app.git
                   git push heroku master

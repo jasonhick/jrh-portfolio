@@ -18,10 +18,10 @@ jobs:
                   node-version: '20.18.0'
 
             - name: Install dependencies
-              run: npm install
+              run: npm ci
 
             - name: Build the app
-              run: npm run build -- --prod
+              run: npx nx affected -t build -- --prod
 
             - name: Deploy to Heroku
               env:

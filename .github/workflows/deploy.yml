@@ -21,7 +21,7 @@ jobs:
               run: npm ci
 
             - name: Build the app
-              run: npx nx affected -t build -- --prod
+              run: npx nx run frontend:build --configuration=production
 
             - name: Deploy to Heroku
               env:

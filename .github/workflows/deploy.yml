@@ -25,7 +25,7 @@ jobs:
 
             - name: Deploy to Heroku
               env:
-                  HEROKU_API_KEY: HRKU-e8b64a11-365c-49c2-8792-a2519a16305e
+                  HEROKU_API_KEY: HRKU-85b9504c-e9ee-468f-a5fd-3e858b82d241
                   HEROKU_APP_NAME: jasonhick-app
               run: |
                   git remote add heroku https://git.heroku.com/jasonhick-app.git

@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "start": "node server.js"
-
+    "start": "node server.js",
+    "heroku-postbuild": "npx nx run frontend:build --configuration=production"
   },
   "private": true,
   "dependencies": {

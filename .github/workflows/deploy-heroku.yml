@@ -1,0 +1,76 @@
+name: Build and Deploy to Heroku
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            # Checkout the latest code from the repository
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            # Set up Node.js for the Nx workspace
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20.18.0'
+
+            # Install dependencies
+            - name: Install dependencies
+              run: npm install
+
+            # Install Nx CLI (optional, if not globally installed)
+            - name: Set up Nx CLI
+              run: npm install -g nx
+
+            # Build the Angular app inside the Nx workspace using Nx
+            - name: Build the app with Nx
+              run: nx build frontend --configuration production
+
+            # Upload build artifacts (dist folder) for use in the deploy job
+            - name: Upload build artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build-files
+                  path: dist/apps/frontend
+
+    deploy:
+        needs: build # This ensures deploy runs after build job completes successfully
+        runs-on: ubuntu-latest
+
+        steps:
+            # Checkout the latest code (we still need this to get server.js, package.json, etc.)
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            # Download the build artifacts (the dist folder from the build job)
+            - name: Download build artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: build-files
+
+            # Copy the downloaded build files and server.js to a new directory
+            - name: Prepare deployment files
+              run: |
+                  mkdir heroku-deploy
+                  cp -R build-files/* heroku-deploy/
+                  cp server.js heroku-deploy/
+                  cp package.json heroku-deploy/
+                  cd heroku-deploy
+
+            # Deploy to Heroku
+            - name: Deploy to Heroku
+              env:
+                  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }} # Heroku API key from GitHub Secrets
+                  HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }} # Heroku app name from GitHub Secrets
+              run: |
+                  cd heroku-deploy
+                  git init
+                  git add .
+                  git commit -m "Deploy built app with server.js to Heroku"
+                  git push --force https://heroku:"$HEROKU_API_KEY"@git.heroku.com/"$HEROKU_APP_NAME".git HEAD:master

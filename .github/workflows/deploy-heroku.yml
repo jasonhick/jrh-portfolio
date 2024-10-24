@@ -53,12 +53,13 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                   name: build-files
+                  path: ./downloaded-files # Specify a path for the downloaded artifact
 
             # Copy the downloaded build files and server.js to a new directory
             - name: Prepare deployment files
               run: |
                   mkdir heroku-deploy
-                  cp -R build-files heroku-deploy/
+                  cp -R downloaded-files/* heroku-deploy/  # Copy files from the extracted artifact folder
                   cp server.js heroku-deploy/
                   cp package.json heroku-deploy/
                   cd heroku-deploy

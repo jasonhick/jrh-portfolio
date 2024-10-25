@@ -1,6 +1,6 @@
 <span class="font-playwrite text-4xl md:text-5xl mb-8 text-amber-600">About me</span>
 
-<div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div>
         <p>
             Hi! I'm Jason, a frontend developer who's all about clean, efficient code and making sure things just work.
@@ -21,22 +21,22 @@
             share what we've learned over the years and to hopefully add a bit of humour to this very dry subject!
         </p>
 
-        <span class="font-playwrite text-2xl xl:text-4xl mb-8 text-amber-600">Get in touch</span>
         <p>
-            <a routerLink="void()" href="mailto:jasonhick@me.com">Email me here</a>
+            <span class="font-playwrite text-2xl xl:text-4xl mb-8 text-amber-600">Get in touch</span>
+            <br /><a routerLink="void()" href="mailto:jasonhick@me.com">Email me here</a>
         </p>
     </div>
 
-    <div class="relative">
+    <div class="md:row-span-2">
         <img
             src="/assets/images/jason-garden.jpeg"
             alt="Jason in the garden"
-            class="border-8 border-neutral-50 drop-shadow-md rounded-lg w-1/2 absolute top-0 left-10 -rotate-3"
+            class="border-8 border-neutral-50 drop-shadow-md rounded-lg w-1/2 -rotate-3 float-left"
         />
         <img
             src="/assets/images/oscar-woods.jpeg"
             alt="Oscar in the woods"
-            class="border-8 border-neutral-50 drop-shadow-md rounded-lg w-1/2 absolute top-20 right-10 rotate-6"
+            class="border-8 border-neutral-50 drop-shadow-md rounded-lg w-1/2 rotate-6 float-right"
         />
     </div>
 </div>

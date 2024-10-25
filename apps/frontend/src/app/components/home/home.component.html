@@ -9,12 +9,12 @@
         my next opportunity.
     </p>
 
-    <p>
+    <p class="my-12">
         <a
             [routerLink]="['/about']"
-            class="p-4 bg-gray-200 rounded-md no-underline hover:bg-gray-300 hover:drop-shadow-sm active:bg-gray-400"
+            class="p-3 bg-indigo-100 rounded-md no-underline hover:bg-indigo-300 hover:drop-shadow-md active:bg-indigo-800 active:text-white"
         >
-            More about me
+            Read more
         </a>
     </p>
 
@@ -22,7 +22,7 @@
     <span class="font-playwrite text-2xl xl:text-4xl mb-8 text-amber-600">Core Skills</span>
     <p class="leading-6">
         Angular, TypeScript, JavaScript, HTML, CSS/SCSS.
-        <br />
+        <br class="hidden sm:block" />
         Agile, Scrum, Jira, Git, Confluence, BitBucket, Jira.
     </p>
 
@@ -57,13 +57,15 @@
     </p>
     <p class="font-playwrite italic mt-6">Ademar Gomes, Lead Developer, Charles Tyrwhitt.</p>
 
-    <hr class="my-8" />
+    <hr class="mt-8 mb-12" />
 
-    <a
-        href="https://www.linkedin.com/in/jasonhick/details/recommendations/"
-        target="_blank"
-        class="p-4 bg-gray-200 rounded-md no-underline hover:bg-gray-300 hover:drop-shadow-sm active:bg-gray-400"
-    >
-        View all recommendations
-    </a>
+    <p>
+        <a
+            href="https://www.linkedin.com/in/jasonhick/details/recommendations/"
+            target="_blank"
+            class="p-3 bg-indigo-100 rounded-md no-underline hover:bg-indigo-300 hover:drop-shadow-md active:bg-indigo-800 active:text-white"
+        >
+            View all recommendations
+        </a>
+    </p>
 </div>
